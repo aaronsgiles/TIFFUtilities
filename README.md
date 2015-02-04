@@ -1,15 +1,13 @@
 # TIFFUtilities
 Set of command line utilities for processing scanned TIFF files
 
-This repository contains several useful command-line utilities for
-processing scanned TIFF images. They are all written for Windows
-and utilize thread pools to run optimally on multi-core systems.
+This repository contains several useful command-line utilities for processing scanned TIFF images. They are all written for Windows and utilize thread pools to run optimally on multi-core systems.
+
+To build them, make sure you have gcc (aka mingw) in your PATH and run m.cmd to build. There is no formal makefile since these are so simple.
 
 ====================================================================
 
-usage: tiffalign [options] input.tif [input2.tif [input3.tif [...]]]
-where options are:
- -l                clean the TIFF
+tiffalign [options] input.tif [input2.tif [input3.tif [...]]]
 
 This one is my primary workhorse. It takes a list of TIF files,
 converts them down to 1-bit black & white, and attempts to rotate
@@ -24,11 +22,7 @@ solid.
 
 ====================================================================
 
-usage: tiffrotate [options] input.tif [input2.tif [...]] output.tif
-where options are:
- -c heightxwidth   auto-crop to the given size
- -l                clean the TIFF
- -r                do not attempt to rotate
+tiffrotate [options] input.tif [input2.tif [...]] output.tif
 
 This is a superset of tiffalign that can also perform a crop. I
 originally used this all-in-one program, but these days I use
@@ -38,11 +32,8 @@ into an output file.
 
 ====================================================================
 
-usage: tiff3hole [options] input.tif [input2.tif [...]] output.tif
-where options are:
- -r dpi output resolution in dpi
- -s        assume single-sided
- 
+tiff3hole [options] input.tif [input2.tif [...]] output.tif
+
 This utility reads in one or more TIFF files and treats them as a
 series of pages to be printed back-to-back on 8.5" x 11" paper. 
 It scales the pages up or down to fit a standard letter size, and
@@ -50,11 +41,7 @@ then shifts alternating pages to allow room for a 3-hole punch.
 
 ====================================================================
 
-usage: tiffbook [options] input.tif [input2.tif [...]] output.tif
-where options are:
- -r dpi output resolution in dpi
- -s pct output scale factor as a percentage
- -f             flip vertical orientation
+tiffbook [options] input.tif [input2.tif [...]] output.tif
 
 This utility is for taking a series of pages and spreading them
 out onto larger pages 2x as wide in galley order so that they
